@@ -340,8 +340,8 @@ corr_val_list = []
 aaaaaa = 0
 
 # Check if there are pre-trained model weights
-# if os.path.isfile(model_weights_path):     # If a weight file for the model exists, load the weight file
-if aaaaaa == 1:     # If aaaaaa equals 1, retrain the model
+if os.path.isfile(model_weights_path):     # If a weight file for the model exists, load the weight file
+# if aaaaaa == 1:     # If aaaaaa equals 1, retrain the model
     model.load_state_dict(torch.load(model_weights_path))     # Load pretrained weights
     print("Loaded pretrained weights.")
 else:
@@ -413,15 +413,15 @@ loss_test = criterion(pred_test, y_test)
 print(f"Test Loss: {loss_test.item()}")
 print(f"Test Loss: {loss_test}")
 
-# Use detach() method where numpy() needs to be called
-df_pred = pd.DataFrame(pred.detach().numpy().flatten(), columns=['after_data'])
-
-# Define output file path 1
-output_file_path = r'prediction\mean_temp\HKO.csv'
-
-# Save DataFrame as CSV file
-df_pred.to_csv(output_file_path, index=False, encoding='utf-8-sig')  # Save Chinese characters using utf-8 encoding
-print(f"The output has been saved to: {output_file_path}")
+# # Use detach() method where numpy() needs to be called
+# df_pred = pd.DataFrame(pred.detach().numpy().flatten(), columns=['after_data'])
+#
+# # Define output file path 1
+# output_file_path = r'prediction\mean_temp\HKO.csv'
+#
+# # Save DataFrame as CSV file
+# df_pred.to_csv(output_file_path, index=False, encoding='utf-8-sig')  # Save Chinese characters using utf-8 encoding
+# print(f"The output has been saved to: {output_file_path}")
 
 # plots
 # ====================================================
@@ -468,6 +468,20 @@ p2, = ax.plot(x, plot_ltm, "--", color="b", alpha=alpha - 0.2, linewidth=linewid
 p3, = ax2.plot(x, plot_ano, "o-", color="r", alpha=alpha, linewidth=linewidth - 2, label="ano")
 p4, = ax2.plot(x, plot_fil, "o-", color="m", alpha=alpha, linewidth=linewidth, label="fil")
 p5, = ax2.plot(x, plot_cnn, "o-", color="k", alpha=alpha - 0.2, linewidth=linewidth - 3, label="cnn")
+
+print("plot_fil---------------",plot_fil)
+print("plot_cnn---------------",plot_cnn)
+
+# Define the file paths
+fil_file_path = "output_data/fil.csv"
+cnn_file_path = "output_data/cnn.csv"
+
+# Save the arrays to CSV files
+np.savetxt(fil_file_path, plot_fil, delimiter=",")
+np.savetxt(cnn_file_path, plot_cnn, delimiter=",")
+
+print(f"Saved plot_fil to {fil_file_path}")
+print(f"Saved plot_cnn to {cnn_file_path}")
 
 # ----- Title -----
 ax.set_title(title, fontsize=title_size, loc="left", weight="bold")
@@ -524,65 +538,65 @@ plt.savefig(fon_prefix + ".png", bbox_inches='tight', dpi=100)
 print(">>> done plotting " + fon_prefix + ".png")
 plt.close()
 
-# plot setting (loss)
-dir_out = "./image_mean_temp/"
-os.system("mkdir -p %s" % dir_out)
-fon_prefix = "%s/02-try_loss_%s_%s" % (dir_out, var, station)
-title = "(%s, %s, kernel1=%d, kernel2=%d, no_epochs=%d)" % (station, var, kernel1, kernel2, no_epochs)
-
-xmin = 0
-xmax = len(loss_train_list)
-
-title_size = 48  # 32
-tick_size = 40  # 28
-axis_title_size = 44  # title_size
-
-# plot data
-fig, ax = plt.subplots(figsize=(40, 10), sharex=True)
-ax2 = ax.twinx()
-
-# ----- line -----
-linewidth = 6
-alpha = 0.7
-
-p1, = ax.plot(loss_train_list, "-", color="b", alpha=alpha, linewidth=linewidth, label="loss_train")
-p2, = ax.plot(loss_val_list, "-", color="r", alpha=alpha, linewidth=linewidth, label="loss_val")
-p3, = ax.plot(corr_train_list, "--", color="b", alpha=alpha, linewidth=linewidth, label="corr_train")
-p4, = ax.plot(corr_val_list, "--", color="r", alpha=alpha, linewidth=linewidth, label="corr_val")
-
-# ----- Title -----
-ax.set_title(title, fontsize=title_size, loc="left", weight="bold")
-ax.set_xlabel("Epochs", fontsize=axis_title_size, weight="bold")
-ax.set_ylabel("Loss (MSE)", fontsize=axis_title_size, weight="bold")
-ax2.set_ylabel("Correlation", fontsize=axis_title_size, weight="bold")
-
-# ----- axes -----
-tkw = dict(size=4, width=1.5)
-ax.tick_params(axis='x', labelsize=tick_size, **tkw)
-ax.tick_params(axis='y', labelsize=tick_size, **tkw)
-ax2.tick_params(axis='y', labelsize=tick_size, **tkw)
-# -- ticks
-ax.tick_params(which='both', width=4)
-ax.tick_params(which='major', length=20, color='k')
-ax.tick_params(which='minor', length=10, color='k')
-ax2.tick_params(which='both', width=4)
-ax2.tick_params(which='major', length=20, color='k')
-ax2.tick_params(which='minor', length=10, color='k')
-# -- Hide the right and top spines
-ax.spines['right'].set_linewidth(4)
-ax.spines['top'].set_linewidth(4)
-ax.spines['left'].set_linewidth(4)
-ax.spines['bottom'].set_linewidth(4)
-
-ax.set_xlim(xmin, xmax)
-ax.set_yscale('log', base=10)
-ax2.set_yscale('log', base=10)
-
-lines = [p1, p2, p3, p4]
-loc_legend = "best"
-ax.legend(lines, [l.get_label() for l in lines], loc=loc_legend, ncol=5, handlelength=1.5, labelspacing=0.3,
-          handletextpad=0.5, columnspacing=1.0, borderaxespad=0.2, shadow=True, fontsize=(tick_size - 4))
-
-plt.savefig(fon_prefix + ".png", bbox_inches='tight', dpi=100)
-print(">>> done plotting " + fon_prefix + ".png")
-plt.close()
+# # plot setting (loss)
+# dir_out = "./image_mean_temp/"
+# os.system("mkdir -p %s" % dir_out)
+# fon_prefix = "%s/02-try_loss_%s_%s" % (dir_out, var, station)
+# title = "(%s, %s, kernel1=%d, kernel2=%d, no_epochs=%d)" % (station, var, kernel1, kernel2, no_epochs)
+#
+# xmin = 0
+# xmax = len(loss_train_list)
+#
+# title_size = 48  # 32
+# tick_size = 40  # 28
+# axis_title_size = 44  # title_size
+#
+# # plot data
+# fig, ax = plt.subplots(figsize=(40, 10), sharex=True)
+# ax2 = ax.twinx()
+#
+# # ----- line -----
+# linewidth = 6
+# alpha = 0.7
+#
+# p1, = ax.plot(loss_train_list, "-", color="b", alpha=alpha, linewidth=linewidth, label="loss_train")
+# p2, = ax.plot(loss_val_list, "-", color="r", alpha=alpha, linewidth=linewidth, label="loss_val")
+# p3, = ax.plot(corr_train_list, "--", color="b", alpha=alpha, linewidth=linewidth, label="corr_train")
+# p4, = ax.plot(corr_val_list, "--", color="r", alpha=alpha, linewidth=linewidth, label="corr_val")
+#
+# # ----- Title -----
+# ax.set_title(title, fontsize=title_size, loc="left", weight="bold")
+# ax.set_xlabel("Epochs", fontsize=axis_title_size, weight="bold")
+# ax.set_ylabel("Loss (MSE)", fontsize=axis_title_size, weight="bold")
+# ax2.set_ylabel("Correlation", fontsize=axis_title_size, weight="bold")
+#
+# # ----- axes -----
+# tkw = dict(size=4, width=1.5)
+# ax.tick_params(axis='x', labelsize=tick_size, **tkw)
+# ax.tick_params(axis='y', labelsize=tick_size, **tkw)
+# ax2.tick_params(axis='y', labelsize=tick_size, **tkw)
+# # -- ticks
+# ax.tick_params(which='both', width=4)
+# ax.tick_params(which='major', length=20, color='k')
+# ax.tick_params(which='minor', length=10, color='k')
+# ax2.tick_params(which='both', width=4)
+# ax2.tick_params(which='major', length=20, color='k')
+# ax2.tick_params(which='minor', length=10, color='k')
+# # -- Hide the right and top spines
+# ax.spines['right'].set_linewidth(4)
+# ax.spines['top'].set_linewidth(4)
+# ax.spines['left'].set_linewidth(4)
+# ax.spines['bottom'].set_linewidth(4)
+#
+# ax.set_xlim(xmin, xmax)
+# ax.set_yscale('log', base=10)
+# ax2.set_yscale('log', base=10)
+#
+# lines = [p1, p2, p3, p4]
+# loc_legend = "best"
+# ax.legend(lines, [l.get_label() for l in lines], loc=loc_legend, ncol=5, handlelength=1.5, labelspacing=0.3,
+#           handletextpad=0.5, columnspacing=1.0, borderaxespad=0.2, shadow=True, fontsize=(tick_size - 4))
+#
+# plt.savefig(fon_prefix + ".png", bbox_inches='tight', dpi=100)
+# print(">>> done plotting " + fon_prefix + ".png")
+# plt.close()

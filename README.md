@@ -19,7 +19,7 @@ This repository contains sample codes of constructing a one-dimensional convolut
 **Files**
 -----
 - Training code
-  - Location: [code/??.csv](https://github.com/jeremychleung/1DCNN_Filter)
+  - Location: [data/mean_temp_daily/hkotemp_d_mean.txt]([https://github.com/jeremychleung/1DCNN_Filter](https://github.com/jeremychleung/1DCNN_Filter/blob/main/data/mean_temp_daily/hkotemp_d_mean.txt))
 - Sample input data
   - Location: [input/??.csv](https://github.com/jeremychleung/1DCNN_Filter)
   - Description: This is a sample input data file, which is provided by the Hong Kong Observatory.

@@ -21,7 +21,7 @@ This repository contains sample codes of constructing a one-dimensional convolut
 - Training code
   - Location: [github_test02_try_pytorch_mean_temp.py](https://github.com/jeremychleung/1DCNN_Filter/blob/main/github_test02_try_pytorch_mean_temp.py)
 - Sample input data
-  - Location: [hkotemp_d_mean.txt](https://github.com/jeremychleung/1DCNN_Filter/blob/main/data/mean_temp_daily/hkotemp_d_mean.txt)
+  - Location: [mean_temp_daily/hkotemp_d_mean.txt](https://github.com/jeremychleung/1DCNN_Filter/blob/main/data/mean_temp_daily/hkotemp_d_mean.txt)
   - Description: This is a sample input data file, which is provided by the Hong Kong Observatory.
 - Sample output data
   - Location: [output_data](https://github.com/jeremychleung/1DCNN_Filter/tree/main/output_data)        [2009-2021data](https://github.com/jeremychleung/1DCNN_Filter/tree/main/2009-2021data)

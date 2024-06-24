@@ -49,5 +49,5 @@ If you use the 1D-CNN temporal filter in a publication or for any other purposes
 
 **Contact**
 -----
-If you have any questions about the data, feel free to contact Dr. Jeremy Leung (chleung@pku.edu.cn or liangzx@gd121.cn) and Dr. Hoiio Kong (hikong@cityu.edu.mo)
+If you have any questions about the data, feel free to contact Dr. Jeremy Leung (chleung@pku.edu.cn) and Dr. Hoiio Kong (hikong@cityu.edu.mo)
 <br /> 

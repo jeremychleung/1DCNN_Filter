@@ -29,7 +29,6 @@ This repository contains sample codes of constructing a one-dimensional convolut
 - Sample output data
   - Location: [output_data](https://github.com/jeremychleung/1DCNN_Filter/tree/main/output_data)      [2009-2021data](https://github.com/jeremychleung/1DCNN_Filter/tree/main/2009-2021data)    [image_mean_temp](https://github.com/jeremychleung/1DCNN_Filter/tree/main/image_mean_temp)     [model weight](https://github.com/jeremychleung/1DCNN_Filter/tree/main/model%20weight) 
   - Description: These four folders are output data generated based on the provided sample code and data. Among them, the output_data folder includes the time series after lanczos filtering and 1D-CNN filtering in 2022. The 2009-2021data folder includes the original time series from 2009-2021 and the time series after lanczos filtering.The image_mean_temp folder includes MSE loss and correlation coefficient charts for the daily average temperature at the HKO site during the training and validation processes after being processed by 1D-CNN and Lanczos filters, as well as a comparative time series graph of the daily average temperature at the HKO site before and after being filtered by Lanczos and 1D-CNN filters in 2022.The model weight folder contains the weights of the 1D-CNN model.
-  -->
 <br />
 
 **Citation and references**

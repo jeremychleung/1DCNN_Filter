@@ -34,7 +34,7 @@ This repository contains sample codes of constructing a one-dimensional convolut
 **Citation and references**
 -----
 If you use the 1D-CNN temporal filter in a publication or for any other purposes, please cite 
-- Yu D., Leung J.C.H., Kong H., Chan P., Fong C., Zhang B. A 1D convolutional neural network (1D-CNN) temporal filter for atmospheric variables: A case study on intraseasonal signal detection based on Hong Kong Observatory station data. (under review). <!-- https://doi.org/10.1007/s00382-022-06142-2 -->
+- Yu D., Leung J.C.H., Kong H., Chan P., Fong C., Zhang B. A 1D convolutional neural network (1D-CNN) temporal filter for atmospheric variability: Reducing sensitivity of filtering accuracy to missing data points. (under review). <!-- https://doi.org/10.1007/s00382-022-06142-2 -->
 - Stan, C., & Mantripragada, R. S. S. (2023). A deep learning filter for the intraseasonal variability of the tropics. Artificial Intelligence for the Earth Systems, 2(4), e220079. 
 <!-- - Zenodo archive: https://doi.org/10.5281/zenodo.8410597 -->
 <br /> 
